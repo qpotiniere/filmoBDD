@@ -2,18 +2,48 @@ package fr.eni.bo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Film {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
+	@Column(length = 50, nullable=false, unique=false)
 	private String titre;
+	
+	@Column(length = 4, nullable=false, unique=false)
 	private int annee;
 	
-
+	@Column(length = 50, nullable=false, unique=false)
 	private Genre genre;
-	private Participant real;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_real", nullable = false)
+    private Participant real;
+	
+	@Column(length = 4, nullable=false, unique=false)
 	private String duree;
+	
+	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}) //pas delete 
+	@JoinTable(name="acteurs", 
+	           joinColumns= {@JoinColumn(name="id")},
+	           inverseJoinColumns= {@JoinColumn(name="id")}
+	)
 	private List<Participant> acteurs;
 	
+	@Column(length = 300, nullable=false, unique=false)
 	private String synopsis;
 		
 	public Film() {
@@ -67,7 +97,7 @@ public class Film {
 		return real;
 	}
 	
-	public void setReal(Realisateur real) {
+	public void setReal(Participant real) {
 		this.real = real;
 	}
 	

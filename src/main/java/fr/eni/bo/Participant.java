@@ -1,11 +1,30 @@
 package fr.eni.bo;
 
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 public class Participant {
 
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
+	@Column(length = 50, nullable=false, unique=false)
 	private String nom;
+	
+	@Column(length = 50, nullable=false, unique=false)
 	private String prenom;
+	
+	@ManyToMany(mappedBy="acteurs")
+	private List<Film> films;
+	
+	@OneToMany(mappedBy = "real")
+	private List<Film> filmsReal;
 	
 	public Participant() {
 	}

@@ -1,10 +1,17 @@
 package fr.eni.bo;
 
-
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 public class Genre {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
+	@Column(length = 50, nullable=false, unique=false)
 	private String libelle;
 	
 	
