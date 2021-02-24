@@ -1,23 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div th:replace="fragments/header :: nav"></div>
 
-</head>
-<body>
-	<div class="container">
-		<form action="/nbMystere/jouer" method="post">
-		<div class="form-group">
-			<label for="exampleFormControlInput1">Email address</label>
-    		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-		</div>
+<h1 class="col-12 text-center mb-5 mt-5">Ajout d'un film</h1>
 
-		</form>
+<form method="post" th:action="@{/ajouterFilm}" th:object="${film}" class="col-10 offset-1">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Titre :</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" placeholder="Titre du film" th:field="*{titre}" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Année :</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" placeholder="Année du film" th:field="*{annee}" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Catégorie :</label>
+        <div class="col-sm-9">
+            <select class="form-control categorieSelect" th:field="*{idCategorie}" required>
+                <option value="">Choisir une catégorie</option>
+                <option th:each="categorie: ${categories}" th:value="${categorie.idCategorie}" th:text="${categorie.label}"></option>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-light addCategorie"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Réalisateur :</label>
+        <div class="col-sm-9">
+            <select class="form-control ParticipantSelect" th:field="*{idRealisateur}" required>
+                <option value="">Choisir un realisateur</option>
+                <option th:each="realisateur: ${realisateurs}" th:value="${realisateur.idParticipant}" th:text="${realisateur.prenom} + ' ' + ${realisateur.nom}"></option>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-light addRealisateur"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Acteurs :</label>
+        <div class="col-sm-9">
+            <select class="form-control ParticipantSelect" th:field="*{idActeurs}" required>
+                <option value="">Choisir un acteur</option>
+                <option th:each="acteur: ${acteurs}" th:value="${acteur.idParticipant}" th:text="${acteur.prenom} + ' ' + ${acteur.nom}"></option>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-light addActeur"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+    <div class="form-group row mt-5 mb-5">
+        <div class="col-sm-11 d-flex flex-row justify-content-end">
+            <button type="submit" class="btn btn-primary mr-1">Ajouter</button>
+            <a href="/" class="btn btn-dark">Annuler</a>
+        </div>
+    </div>
+</form>
+
+<div class="blackFilter">
+    <div class="popin"></div>
 </div>
-			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
+<script src="js/addFilm.js"></script>
 </html>
