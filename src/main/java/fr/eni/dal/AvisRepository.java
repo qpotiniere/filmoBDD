@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import fr.eni.bo.Avis;
 
 @Repository
-public interface AvisRepository extends JpaRepository<Avis, Long> {
+public interface AvisRepository extends JpaRepository<Avis, Integer> {
 
 }

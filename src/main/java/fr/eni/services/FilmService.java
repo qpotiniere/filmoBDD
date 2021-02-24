@@ -7,11 +7,11 @@ import fr.eni.bo.Film;
 
 public interface FilmService {
 	
-	public ArrayList<Film> ajouterUnFilm();
+	public void ajouterUnFilm(Film film);
 	
 	public void ajouterUnAvis(Avis avis);
 	
-	public Film detailFilm(int idFilm);
+	public Film detailFilm(Integer idFilm);
 	
 	public ArrayList<Film> listFilm();
 

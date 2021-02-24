@@ -22,16 +22,16 @@ public class FilmServiceImpl implements FilmService {
 	}
 
 	@Override
-	public ArrayList<Film> ajouterUnFilm() {
-		return null;
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public Film detailFilm(int idFilm) {
-		return null;
+	public Film detailFilm(Integer idFilm) {
+		return filmRepo.findById(idFilm).get();
 	}
 	
+	@Override
+	public void ajouterUnFilm(Film film) {
+		System.out.println(film);
+		filmRepo.save(film);
+	}
+
 	//A faire si le temps
 	@Override
 	public void ajouterUnAvis(Avis avis) {

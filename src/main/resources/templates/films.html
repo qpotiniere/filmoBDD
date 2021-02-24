@@ -10,7 +10,7 @@
 	<body>
 		<div class="container">
 			<div class="row justify-content-center">
-				<a href="/films/ajoutFilm" class="btn btn-primary"> Créer</a>
+				<a href="/ajoutFilm" class="btn btn-primary"> Créer</a>
 			</div>
 			<br>
 			<div class="row">
@@ -41,7 +41,7 @@
 								<span th:text="${acteur.nom}"></span>
 								<span th:text="${acteur.prenom}"></span><br>				
 							</span></td>				            <td><span th:text="${film.synopsis}"> </span></td>
-				            <td><a th:href="@{/films/detailFilm/{id}(id=${film.id})}">Afficher les détails</a></td>
+				            <td><a th:href="@{/detailFilm/{id}(id=${film.id})}">Afficher les détails</a></td>
 			        	</tr>
 				    </tbody>
 				</table>
