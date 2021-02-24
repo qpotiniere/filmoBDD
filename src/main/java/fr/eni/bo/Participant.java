@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 public class Participant {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
 	@Column(length = 50, nullable=false, unique=false)
 	private String nom;
