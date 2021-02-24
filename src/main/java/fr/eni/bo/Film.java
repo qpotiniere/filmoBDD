@@ -26,11 +26,12 @@ public class Film {
 	@Column(length = 4, nullable=false, unique=false)
 	private int annee;
 	
-	@Column(length = 50, nullable=false, unique=false)
+	@ManyToOne
+    @JoinColumn(name = "idGenre", nullable = false)
 	private Genre genre;
 	
 	@ManyToOne
-    @JoinColumn(name = "id_real", nullable = false)
+    @JoinColumn(name = "idReal", nullable = false)
     private Participant real;
 	
 	@Column(length = 4, nullable=false, unique=false)
@@ -38,8 +39,8 @@ public class Film {
 	
 	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}) //pas delete 
 	@JoinTable(name="acteurs", 
-	           joinColumns= {@JoinColumn(name="id")},
-	           inverseJoinColumns= {@JoinColumn(name="id")}
+	           joinColumns= {@JoinColumn(name="idFilm")},
+	           inverseJoinColumns= {@JoinColumn(name="idActeur")}
 	)
 	private List<Participant> acteurs;
 	
