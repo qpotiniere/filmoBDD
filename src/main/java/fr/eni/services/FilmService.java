@@ -14,4 +14,5 @@ public interface FilmService {
 	public Film detailFilm(int idFilm);
 	
 	public ArrayList<Film> listFilm();
+
 }

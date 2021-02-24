@@ -29,7 +29,7 @@ public class Filmcontroller {
 	}
 	
 	@GetMapping({"/detailFilm/{id}"})
-	public String detail(Model model, @PathVariable("id") int id) {
+	public String detail(Model model, @PathVariable("id") Integer id) {
 	    model.addAttribute("films", service.detailFilm(id));
 	    return "detailFilm";
 	}
