@@ -17,8 +17,8 @@ import javax.persistence.ManyToOne;
 public class Film {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
 	@Column(length = 50, nullable=false, unique=false)
 	private String titre;
