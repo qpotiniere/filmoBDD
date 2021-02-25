@@ -61,7 +61,7 @@ public class Film {
 		this.synopsis = synopsis;
 	}
 
-	public Film(int id, String titre, int annee, Genre genre, Participant real, String duree, List<Participant> acteurs, String synopsis) {
+	public Film(Integer id, String titre, int annee, Genre genre, Participant real, String duree, List<Participant> acteurs, String synopsis) {
 		this.id = id;
 		this.titre = titre;
 		this.annee = annee;
