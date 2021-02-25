@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.eni.bo.Film;
+import fr.eni.bo.Genre;
+import fr.eni.bo.Participant;
 import fr.eni.forms.FilmForm;
 import fr.eni.services.FilmService;
 import fr.eni.services.GenreService;
@@ -42,9 +43,7 @@ public class Filmcontroller {
 	
 	@PostMapping({"/ajoutFilm"})
     public String ajouterFilm(@ModelAttribute("film") FilmForm film) {
-		
-		System.out.println(film);
-		
+
         Film newFilm = new Film();
         newFilm.setTitre(film.getTitre());
         newFilm.setAnnee(film.getAnnee());

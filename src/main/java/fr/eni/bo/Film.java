@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Film {
@@ -46,11 +47,14 @@ public class Film {
 	
 	@Column(length = 300, nullable=false, unique=false)
 	private String synopsis;
+	
+	@OneToMany(mappedBy = "film")
+    private List<Avis> avis;
 		
 	public Film() {
 
 	}
-	
+
 	public Film(String titre, int annee, Genre genre, Participant real, String duree, List<Participant> acteurs, String synopsis) {
 		this.titre = titre;
 		this.annee = annee;
@@ -72,11 +76,11 @@ public class Film {
 		this.synopsis = synopsis;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -134,6 +138,14 @@ public class Film {
 	
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
+	}
+	
+	public List<Avis> getAvis() {
+		return avis;
+	}
+
+	public void setAvis(List<Avis> avis) {
+		this.avis = avis;
 	}
 
 	@Override

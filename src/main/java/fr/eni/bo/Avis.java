@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Avis {
@@ -18,6 +20,14 @@ public class Avis {
 	
 	@Column(length = 300, nullable=false, unique=false)
 	private String libele;
+	
+	@ManyToOne
+	@JoinColumn(name = "idFilm", nullable = false)
+	private Film film;
+
+	@ManyToOne
+	@JoinColumn(name = "idMembre", nullable = false)
+	private Membre membre;	
 	
 	public Avis() {
 		
@@ -51,8 +61,4 @@ public class Avis {
 	public void setLibele(String libele) {
 		this.libele = libele;
 	}
-
-	
-	
-	
 }
