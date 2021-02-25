@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import fr.eni.bo.Avis;
 import fr.eni.bo.Film;
-import fr.eni.bo.Genre;
-import fr.eni.bo.Participant;
 import fr.eni.dal.FilmRepository;
 
 @Service

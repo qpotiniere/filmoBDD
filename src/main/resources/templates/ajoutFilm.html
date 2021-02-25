@@ -34,9 +34,6 @@
 		                <option th:each="genre: ${genres}" th:value="${genre.id}" th:text="${genre.libelle}"></option>
 		            </select>
 		        </div>
-		        <div class="col-sm-1">
-		            <button type="button" class="btn btn-light addCategorie"><i class="fas fa-plus"></i></button>
-		        </div>
 		    </div>
 		    
 		    <div class="form-group row">
@@ -47,21 +44,14 @@
 		                <option th:each="realisateur: ${realisateurs}" th:value="${realisateur.id}" th:text="${realisateur.prenom} + ' ' + ${realisateur.nom}"></option>
 		            </select>
 		        </div>
-		        <div class="col-sm-1">
-		            <button type="button" class="btn btn-light addRealisateur"><i class="fas fa-plus"></i></button>
-		        </div>
 		    </div>
 		    
 		    <div class="form-group row">
 		        <label class="col-sm-2 col-form-label">Acteurs :</label>
 		        <div class="col-sm-9">
-		            <select class="form-control ParticipantSelect" th:field="*{idActeurs}" required>
-		                <option value="">Choisir un acteur</option>
+		            <select class="form-control ParticipantSelect" th:field="*{idActeurs}" required multiple>
 		                <option th:each="acteur: ${acteurs}" th:value="${acteur.id}" th:text="${acteur.prenom} + ' ' + ${acteur.nom}"></option>
 		            </select>
-		        </div>
-		        <div class="col-sm-1">
-		            <button type="button" class="btn btn-light addActeur"><i class="fas fa-plus"></i></button>
 		        </div>
 		    </div>
 		    
